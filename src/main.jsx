@@ -78,8 +78,9 @@ function Menu() {
       {numPizzas > 0 ? (
         <>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus,
-            quisquam!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+            nisi aperiam reprehenderit sit, repudiandae maxime quaerat rem
+            incidunt recusandae. Impedit.
           </p>
           <ul className="pizzas">
             {pizzaData.map((pizza) => (
