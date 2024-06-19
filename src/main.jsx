@@ -114,18 +114,22 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpened ? (
-        <div className="order">
-          <p>
-            We are Opened Untill {closeHour}:00. Come visit us or order online.
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           We are happy to invite you from {openHour}:00 to {closeHour}:00.
         </p>
       )}
     </footer>
+  );
+}
+  
+function Order(props) {
+  return (
+    <div className="order">
+      <p>We are Opened Untill {props.closeHour}:00. Come visit us or order online.</p>
+      <button className="btn">Order</button>n
+    </div>
   );
 }
 
