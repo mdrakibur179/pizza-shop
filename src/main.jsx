@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./styles/index.css";
 
 const pizzaData = [
   {
@@ -49,20 +51,67 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-      <Pizza />
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
 
-function Pizza() {
-  return <div>
-    <img src="pizzas/prosciutto.jpg" alt="pizza-prosciutto" />
-    <h1>Pizza Prosciutto</h1>
-    <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
+function Header() {
+  return (
+    <header className="header">
+      <h1>Fast Pizza Co.</h1>
+    </header>
+  );
+}
 
-  </div>
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza key={pizza.name} pizzaObj={pizza} />
+        ))}
+      </ul>
+      {/* <Pizza
+        photoName="pizzas/prosciutto.jpg"
+        name="Pizza Prosciutto"
+        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
+        price={18}
+      /> */}
+    </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <div>
+        <h1>{props.pizzaObj.name}</h1>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price}</span>
+      </div>
+    </li>
+  );
+}
+
+function Footer() {
+  const getTime = new Date().toLocaleTimeString();
+  const hour = new Date().getHours();
+  const openHour = 10;
+  const closeHour = 22;
+  const isOpened = hour >= openHour && hour <= closeHour;
+
+  return (
+    <footer>
+      {getTime}
+      {isOpened ? " Currently We are opened" : " Sorry, Come back later."}
+    </footer>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
